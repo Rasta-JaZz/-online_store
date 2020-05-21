@@ -3,6 +3,7 @@ import React from "react"
 import AnimatedText from "./animatedText"
 import "./style.css"
 import { Button } from "@material-ui/core"
+import { NavLink } from "react-router-dom"
 
 // HomeContent.propTypes = {}
 
@@ -16,9 +17,11 @@ function HomeContent(props) {
 				<div className="content__right-box"></div>
 			</div>
 			<div className="content__button">
-				<Button color="primary" variant="contained">
-					Каталог
-				</Button>
+				<NavLink to="/popular">
+					<Button color="primary" variant="contained">
+						Каталог
+					</Button>
+				</NavLink>
 			</div>
 		</div>
 	)

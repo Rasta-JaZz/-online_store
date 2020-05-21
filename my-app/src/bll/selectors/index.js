@@ -1,13 +1,19 @@
 import { createSelector } from "reselect"
-import { products } from "../../db"
-import { arrToMap } from "../../components/utils/arrToMap"
+
+export const basketSelector = (state) => Object.values(state.basket)
 
 export const arrToProducts = (state) => Object.values(state.data)
-export const allProducts = (state) => state.data
-export const popularProducts = createSelector(arrToProducts, (products) => {
-	const arr = []
-	for (let i = 0; i < products.length; i++) {
-		if (products[i].brand === "samsung") arr.push(products[i])
+
+export const tabSelector = (state) => state.activeTab
+
+export const secondPageSelector = createSelector(
+	arrToProducts,
+	tabSelector,
+	(products, tab) => {
+		let arr = []
+		for (let i = 0; i < products.length; i++) {
+			if (products[i].brand === tab) arr.push(products[i])
+		}
+		return arr
 	}
-	return arr
-})
+)

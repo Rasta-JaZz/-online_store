@@ -6,10 +6,12 @@ import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
 import Button from "@material-ui/core/Button"
 import Typography from "@material-ui/core/Typography"
-import { CardHeader } from "@material-ui/core"
+import { CardHeader, IconButton } from "@material-ui/core"
 import { Zoom } from "@material-ui/core"
 import { connect } from "react-redux"
-import { popularProducts, arrToProducts } from "../../bll/selectors/index"
+import { secondPageSelector } from "../../bll/selectors/index"
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder"
+import { addToBasket } from "../../bll/ac"
 
 const useStyles = makeStyles({
 	root: {
@@ -31,8 +33,7 @@ const useStyles = makeStyles({
 
 function MediaCard(props) {
 	const classes = useStyles()
-
-	console.log(props.products)
+	console.log("render :>> ")
 
 	const getbody = () => {
 		return props.products.map((elem) => (
@@ -51,12 +52,12 @@ function MediaCard(props) {
 								{elem.price.toLocaleString()} &#8381;
 							</Typography>
 						</CardContent>
-						<CardActions>
-							<Button size="small" color="primary">
-								Share
-							</Button>
-							<Button size="small" color="primary">
-								Learn More
+						<CardActions style={{ justifyContent: "space-around" }}>
+							<IconButton align="right">
+								<FavoriteBorderIcon />
+							</IconButton>
+							<Button onClick={() => props.addToBasket(elem)} color="secondary">
+								Добавить в корзину
 							</Button>
 						</CardActions>
 					</Card>
@@ -68,6 +69,9 @@ function MediaCard(props) {
 	return getbody()
 }
 
-export default connect((state) => ({
-	products: arrToProducts(state),
-}))(MediaCard)
+export default connect(
+	(state) => ({
+		products: secondPageSelector(state),
+	}),
+	{ addToBasket }
+)(MediaCard)

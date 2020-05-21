@@ -5,7 +5,6 @@ import Button from "@material-ui/core/Button"
 import { makeStyles } from "@material-ui/core/styles"
 import TextField from "@material-ui/core/TextField"
 import { connect } from "react-redux"
-import { amountProducts } from "@/AC"
 
 const useStyles = makeStyles({
 	container: {
@@ -32,7 +31,7 @@ function CounterFunction(props) {
 	const classes = useStyles()
 	const [count, setCount] = useState(1)
 	const [isError, setIsError] = useState(false)
-	useEffect(() => void props.amountProducts(props.id, count))
+	// useEffect(() => void props.amountProducts(props.id, count))
 
 	function handleBlur() {
 		props.amountProducts(props.id, count)
@@ -73,6 +72,4 @@ function CounterFunction(props) {
 	)
 }
 
-export default connect(null, {
-	amountProducts,
-})(CounterFunction)
+export default CounterFunction

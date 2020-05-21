@@ -17,17 +17,10 @@ function SecondPage(props) {
 							component="h2"
 							color="textSecondary"
 						>
-							ПОПУЛЯРНОЕ
+							популярное
 						</Typography>
 					</div>
-					<div
-						style={{
-							display: "flex",
-							flexDirection: "row",
-							flexWrap: "wrap",
-							justifyContent: "space-between",
-						}}
-					>
+					<div className="second-page__card-container">
 						<MediaCard />
 					</div>
 				</div>
