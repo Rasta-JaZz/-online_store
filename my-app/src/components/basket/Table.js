@@ -13,7 +13,6 @@ import CounterFunction from "../counterFunction"
 import Modal from "../modal"
 import { useStyles } from "./style"
 import { Avatar, Tooltip, Box, Zoom } from "@material-ui/core"
-import Slide from "@material-ui/core/Slide"
 import { basketSelector } from "../../BLL/selectors"
 import { connect } from "react-redux"
 

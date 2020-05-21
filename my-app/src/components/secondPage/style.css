@@ -1,0 +1,18 @@
+.second-page__content {
+	display: flex;
+	flex-direction: column;
+	width: 1150px;
+	border-radius: 5px;
+	box-shadow: 5px 10px 20px #26a69a;
+	padding: 10px;
+	margin-top: 50px;
+}
+.second-page__container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.second-page__header {
+	display: flex;
+	justify-content: center;
+}
